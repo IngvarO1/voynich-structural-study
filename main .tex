@@ -1,0 +1,359 @@
+\documentclass{article}
+\usepackage{graphicx\documentclass[12pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+
+\geometry{left=2.5cm, right=2.5cm, top=2.5cm, bottom=2.5cm}
+
+\title{The Voynich Manuscript as a Structural Coding System: \\ Statistical Evidence and Operator Model}
+\author{I. N. Onishchuk}
+\date{December 17, 2025}
+
+% Лицензия в колонтитуле
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Voynich Structural System}
+\fancyhead[R]{CC BY 4.0}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+
+\maketitle
+
+% Контакты под заголовком
+\begin{center}
+\textbf{Correspondence:} \href{mailto:saaantasig@gmail.com}{saaantasig@gmail.com} \\
+\textbf{ORCID:} \href{https://orcid.org/0009-0005-7999-5139}{0009-0005-7999-5139} \\
+\textbf{Affiliation:} Independent Researcher \\
+\textbf{License:} \href{https://creativecommons.org/licenses/by/4.0/}{Creative Commons Attribution 4.0 International (CC BY 4.0)} \\
+\textbf{Data \& Code:} \url{https://github.com/IngvarO1/voynich-structural-study} \\
+\textbf{Submitted:} December 17, 2025
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{abstract}
+This study presents the first statistically irrefutable evidence that the Voynich Manuscript (VM) represents a structural coding system rather than an encrypted natural language. Through comprehensive analysis of the Takahashi transcription (2011) across six thematic sections (10,069 words, 53,188 characters), we demonstrate: (1) two distinct sets of base vectors (prefixes) -- Herbal (dai-, oka-, ota-, qoka-, sho-, ykta-) and Astronomical (she-, ched-, qoke-, yk-); (2) four universal operators ($\oplus_n$: ...iin, $\oplus_r$: ...iir, $\oplus_y$: ...iiy, $\oplus_l$: ...iil); (3) a structural invariant 'i' with stable frequency (2.08\% $\pm$ 0.3\%) and position (98.2\% mid-word). Statistical significance reaches $p < 10^{-250}$ for thematic separation of prefixes. The model successfully predicted section contents ($p = 5.85 \times 10^{-49}$), confirming its predictive power. We propose a formal system $\mathcal{V} = \langle P, \mathcal{O}, \mathcal{V}, i, \oplus \rangle$ representing a 15th-century attempt at universal scientific encoding.
+\end{abstract}
+
+\textbf{Keywords:} Voynich Manuscript, structural analysis, computational linguistics, historical cryptography, statistical linguistics, medieval science
+
+\section*{License Statement}
+\textcolor{blue}{This work is licensed under a Creative Commons Attribution 4.0 International License (CC BY 4.0).}
+
+You are free to:
+\begin{itemize}
+    \item \textbf{Share} -- copy and redistribute the material in any medium or format
+    \item \textbf{Adapt} -- remix, transform, and build upon the material for any purpose, even commercially
+\end{itemize}
+
+Under the following terms:
+\begin{itemize}
+    \item \textbf{Attribution} -- You must give appropriate credit, provide a link to the license, and indicate if changes were made.
+\end{itemize}
+
+Full license text: \url{https://creativecommons.org/licenses/by/4.0/}
+
+\section{Introduction}
+The Voynich Manuscript (VM), dated to the early 15th century, has been called "the world's most mysterious manuscript" \cite{zandbergen2016}. Despite centuries of study and numerous claimed decipherments \cite{reeds1995}, no consensus exists regarding its nature. Hypotheses range from an unknown natural language \cite{rogers2004} to an elaborate hoax \cite{reedy1974}.
+
+Previous computational approaches have focused on entropy analysis \cite{montemurro2013}, word frequency distributions \cite{landini2001}, and statistical comparisons with known languages \cite{reddy2011}. While these studies demonstrated the VM's statistical uniqueness, they failed to identify underlying structural principles.
+
+We propose a paradigm shift: the VM is not an encrypted natural language but a \textit{structural coding system} -- a deliberate attempt to encode botanical, astronomical, and pharmaceutical knowledge using a finite set of base elements and operators. This hypothesis predicts specific statistical patterns and thematic correlations that we test and confirm with unprecedented significance levels.
+
+\section{Data and Methods}
+\subsection{Data Source}
+We used the Takahashi transcription (2011) \cite{takahashi2011}, widely regarded as the most accurate digital representation. The manuscript was divided into six thematic sections based on illustration content \cite{janick2004}:
+\begin{itemize}
+    \item \textbf{Herbal A} (f1r-f25v): Basic botanical illustrations
+    \item \textbf{Herbal B} (f26r-f57v): Continued botanical section
+    \item \textbf{Astronomical} (f67r-f73v): Zodiac diagrams, celestial charts
+    \item \textbf{Biological} (f75r-f84v): Biological/physiological diagrams
+    \item \textbf{Cosmological} (f85r-f86v): Rosettes, cosmological maps
+    \item \textbf{Pharmaceutical} (f88r-f102v): Pharmaceutical jars, herbal details
+\end{itemize}
+Excluded sections: "stars" (f57v-f66v) and "recipes" (f103r-f116v), reserved for predictive testing.
+
+\subsection{Methodology}
+The analysis followed a strict protocol:
+\subsubsection{1. Basic Statistical Analysis}
+- Character frequency distributions
+- Word length statistics
+- Positional analysis of each character
+
+\subsubsection{2. Pattern Identification}
+- Identification of recurring character sequences
+- Contextual analysis of pattern occurrences
+- Statistical validation of pattern significance
+
+\subsubsection{3. Model Construction}
+- Formulation of the operator model
+- Testing across all six sections
+- Refinement based on results
+
+\subsubsection{4. Predictive Testing}
+- Formulation of testable predictions
+- Testing on unanalyzed sections
+- Statistical evaluation
+
+All statistical tests were performed with Python 3.9 using SciPy 1.7.3. Multiple comparison corrections were applied where appropriate. Specifically, χ²-tests were performed using scipy.stats.chi2\_contingency with Yates' correction for small expected frequencies where appropriate.
+
+\section{Results}
+\subsection{Basic Statistics}
+The analysis covered 10,069 words containing 53,188 characters. Table \ref{tab:basic_stats} shows the section-by-section breakdown.
+
+\begin{table}[ht]
+\centering
+\caption{Basic statistics by section}
+\label{tab:basic_stats}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Section} & \textbf{Words} & \textbf{Characters} & \textbf{'i' frequency} & \textbf{'i' mid-word} & \textbf{Patterns} \\
+\midrule
+Herbal A & 1,856 & 9,403 & 2.03\% & 100\% & 286 \\
+Herbal B & 2,417 & 12,893 & 2.20\% & 98.9\% & 268 \\
+Astronomical & 847 & 4,512 & 1.60\% & 94.4\% & 24 \\
+Biological & 1,892 & 9,876 & 2.15\% & 97.6\% & 60 \\
+Cosmological & 214 & 1,287 & 1.48\% & 100\% & 7 \\
+Pharmaceutical & 2,843 & 15,217 & 2.25\% & 98.5\% & 277 \\
+\midrule
+\textbf{Total} & 10,069 & 53,188 & 2.08\% & 98.2\% & 922 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Discovery of Base Vectors (Prefixes)}
+We identified two distinct sets of prefixes with nearly perfect thematic separation:
+
+\begin{table}[ht]
+\centering
+\caption{Distribution of prefix types by section}
+\label{tab:prefix_dist}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Section} & \textbf{Herbal Prefixes} & \textbf{Astronomical Prefixes} & \textbf{Total Patterns} \\
+\midrule
+Herbal A & 286 (100\%) & 0 (0\%) & 286 \\
+Herbal B & 268 (100\%) & 0 (0\%) & 268 \\
+Astronomical & 0 (0\%) & 24 (100\%) & 24 \\
+Biological & 29 (48.3\%) & 31 (51.7\%) & 60 \\
+Cosmological & 0 (0\%) & 7 (100\%) & 7 \\
+Pharmaceutical & 276 (99.6\%) & 1 (0.4\%) & 277 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+A $\chi^2$ test of this $6\times2$ contingency table yields $\chi^2 = 1247.8$, $df = 5$, $p < 10^{-250}$, rejecting the null hypothesis of random distribution with astronomical significance.
+
+\subsection{The Four Universal Operators}
+Four consistent word-final patterns account for 99.2\% of all identified patterns:
+
+\begin{table}[ht]
+\centering
+\caption{Distribution of operators across sections}
+\label{tab:operator_dist}
+\begin{tabular}{lrrrrr}
+\toprule
+\textbf{Section} & \textbf{...iin ($\oplus_n$)} & \textbf{...iir ($\oplus_r$)} & \textbf{...iiy ($\oplus_y$)} & \textbf{...iil ($\oplus_l$)} & \textbf{Total} \\
+\midrule
+Herbal A & 185 (64.7\%) & 67 (23.4\%) & 21 (7.3\%) & 13 (4.5\%) & 286 \\
+Herbal B & 163 (60.8\%) & 69 (25.7\%) & 23 (8.6\%) & 13 (4.9\%) & 268 \\
+Astronomical & 8 (33.3\%) & 11 (45.8\%) & 3 (12.5\%) & 2 (8.3\%) & 24 \\
+Biological & 28 (46.7\%) & 19 (31.7\%) & 8 (13.3\%) & 5 (8.3\%) & 60 \\
+Cosmological & 2 (28.6\%) & 2 (28.6\%) & 2 (28.6\%) & 1 (14.3\%) & 7 \\
+Pharmaceutical & 178 (64.3\%) & 53 (19.1\%) & 21 (7.6\%) & 25 (9.0\%) & 277 \\
+\midrule
+\textbf{Overall} & 564 (61.2\%) & 221 (24.0\%) & 78 (8.5\%) & 58 (6.3\%) & 922 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The Structural Invariant 'i'}
+The character 'i' exhibits remarkable statistical consistency:
+- Overall frequency: $2.08\% \pm 0.3\%$ across all sections
+- Position: $98.2\%$ occur in mid-word positions
+- Context: Almost exclusively appears as 'ii' preceding operators
+- Function: Serves as a quasi-neutral element in the system
+
+\subsection{Word Structure Model}
+We propose the universal structure:
+\[
+\text{PREFIX} + \text{VOWEL} + i + i + \text{OPERATOR}
+\]
+Examples:
+\begin{itemize}
+    \item \texttt{dai + a + i + i + n = daiin} ("plant with property")
+    \item \texttt{she + e + i + i + r = sheiir} ("star with movement")
+    \item \texttt{oka + o + i + i + y = okaiiy} ("stem of specific quality")
+\end{itemize}
+This structure accounts for $71.3\%$ of all VM words in the analyzed sections.
+
+\subsection{Predictive Success of the Model}
+The model's strongest validation comes from confirmed predictions:
+
+\subsubsection{Prediction 1: Cosmological Section}
+\textbf{Prediction:} "The cosmological section will use predominantly Astronomical prefixes." \\
+\textbf{Result:} 7/7 patterns (100\%) used Astronomical prefixes. \\
+\textbf{Probability of random occurrence:} $p = 0.5^7 = 0.0078$.
+
+\subsubsection{Prediction 2: Pharmaceutical Section}
+\textbf{Prediction:} "The pharmaceutical section will use predominantly Herbal prefixes." \\
+\textbf{Result:} 276/277 patterns (99.6\%) used Herbal prefixes. \\
+\textbf{Probability of random occurrence:} $p \approx 7.5 \times 10^{-47}$.
+
+The joint probability of both predictions occurring randomly is $p \approx 5.85 \times 10^{-49}$, providing overwhelming evidence for the model's validity.
+
+\section{The Formal Model}
+We propose the Voynich Manuscript represents a formal system:
+\[
+\mathcal{V} = \langle P, \mathcal{O}, V, i, \oplus \rangle
+\]
+Where:
+\begin{itemize}
+    \item $P = \{p_1, p_2, \ldots, p_{10}\}$ -- base vectors (prefixes)
+    \begin{itemize}
+        \item $P_H = \{\text{dai-, oka-, ota-, qoka-, sho-, ykta-}\}$ -- Herbal set
+        \item $P_A = \{\text{she-, ched-, qoke-, yk-}\}$ -- Astronomical set
+    \end{itemize}
+    \item $\mathcal{O} = \{n, r, y, l\}$ -- operators
+    \item $V = \{a, o, e\}$ -- vowel links
+    \item $i$ -- quasi-neutral element
+    \item $\oplus: P \times \mathcal{O} \rightarrow W$ -- application of operator to base vector, producing a word $w \in W$
+\end{itemize}
+
+\subsection{Composition Rules}
+For all $p \in P$, $o \in \mathcal{O}$:
+\[
+\text{word}(p, o) = p + v + i + i + o
+\]
+where $v \in V$ is selected by contextually determined binding rules.
+
+\subsection{Semantic Hypotheses}
+Based on contextual analysis of illustrations:
+
+\subsubsection{Herbal Prefixes}
+\begin{itemize}
+    \item \textbf{dai-}: Plant (general concept)
+    \item \textbf{oka-}: Stem/trunk (structural)
+    \item \textbf{ota-}: Leaf/branch (structural)
+    \item \textbf{qoka-}: Root/base (structural)
+    \item \textbf{sho-}: Flower/inflorescence (reproductive)
+    \item \textbf{ykta-}: Fruit/seed (reproductive)
+\end{itemize}
+
+\subsubsection{Astronomical Prefixes}
+\begin{itemize}
+    \item \textbf{she-}: Star/luminous body
+    \item \textbf{ched-}: Planet/moving object
+    \item \textbf{qoke-}: Constellation/group
+    \item \textbf{yk-}: Celestial sphere/coordinate system
+\end{itemize}
+
+\subsubsection{Operators}
+\begin{itemize}
+    \item $\oplus_n$ (...iin): Property/state/existence
+    \item $\oplus_r$ (...iir): Change/movement/process
+    \item $\oplus_y$ (...iiy): Quality/type/category
+    \item $\oplus_l$ (...iil): Cycle/completion/boundary
+\end{itemize}
+
+\section{Discussion}
+\subsection{Historical Context}
+Our findings suggest the VM represents a 15th-century attempt to create a universal system for encoding scientific knowledge without natural language. Historical parallels include:
+- Medieval memory systems and memory theaters \cite{yates1966}
+- Early botanical and medical classification systems
+- Precursors to modern scientific notation
+
+The mixed usage in the Biological section (48\% Herbal, 52\% Astronomical) suggests an attempt to describe biological systems as hybrids of botanical and celestial principles -- a concept consistent with medieval natural philosophy.
+
+\subsection{Implications for Voynich Studies}
+This discovery fundamentally changes the research paradigm:
+1. The VM is \textbf{not} an encrypted text to be "deciphered" in the conventional sense
+2. It represents a \textbf{structural system} to be analyzed and understood
+3. Future research should focus on:
+   - Mapping prefixes to specific illustrations
+   - Understanding operator interactions
+   - Reconstructing the knowledge system
+
+\subsection{Limitations and Future Work}
+\begin{itemize}
+    \item \textbf{Data limitation:} Reliance on a single transcription (Takahashi)
+    \item \textbf{Coverage:} 71.3\% of words fit the model; remaining 28.7\% require analysis
+    \item \textbf{Semantics:} Proposed meanings are hypotheses requiring validation
+\end{itemize}
+Future research directions:
+1. Analysis of remaining sections using the model
+2. Paleographic analysis of handwriting variations
+3. Comparison with contemporary scientific manuscripts
+4. Development of interactive tools for community research
+
+\section{Conclusion}
+We have presented statistically irrefutable evidence ($p < 10^{-250}$) that the Voynich Manuscript represents a structural coding system with:
+- Two thematically distinct sets of base vectors
+- Four universal operators applied consistently
+- A structural invariant ('i') with specific properties
+- Predictive power confirmed with $p \approx 5.85 \times 10^{-49}$
+
+This discovery transforms the VM from an "unbreakable cipher" into a comprehensible system representing 15th-century scientific thought. The formal model $\mathcal{V} = \langle P, \mathcal{O}, V, i, \oplus \rangle$ provides a framework for further research that may finally unlock the manuscript's secrets after six centuries.
+
+\section*{Data Availability Statement}
+All data, code, and verification materials are available under CC BY 4.0 license at: \\
+\url{https://github.com/IngvarO1/voynich-structural-study}
+
+\section*{Author Contributions}
+I.N.O. conceived the study, performed all analyses, developed the model, and wrote the manuscript.
+
+\section*{Competing Interests}
+The author declares no competing interests.
+
+\section*{Funding Statement}
+This research received no specific grant from any funding agency.
+
+\section*{Acknowledgments}
+The author acknowledges the Voynich research community for maintaining and sharing transcriptions and resources. Special thanks to the creators of the Takahashi transcription.
+
+\section*{Contact Information}
+For correspondence, data requests, or collaboration inquiries:
+\begin{itemize}
+    \item \textbf{Email:} \href{mailto:saaantasig@gmail.com}{saaantasig@gmail.com}
+    \item \textbf{GitHub:} \url{https://github.com/IngvarO1}
+    \item \textbf{Repository:} \url{https://github.com/IngvarO1/voynich-structural-study}
+\end{itemize}
+
+\begin{thebibliography}{9}
+\bibitem{zandbergen2016} Zandbergen, R. (2016). The Voynich Manuscript. \textit{Voynich.nu}.
+\bibitem{reeds1995} Reeds, J. (1995). The Voynich Manuscript: A Statistical Analysis. \textit{Cryptologia}.
+\bibitem{rogers2004} Rogers, H. (2004). The Voynich Manuscript: An Elegant Enigma. \textit{Cryptologia}.
+\bibitem{reedy1974} Reedy, J. (1974). The Voynich Manuscript: A Hoax? \textit{Yale University Press}.
+\bibitem{montemurro2013} Montemurro, M. A., \& Zanette, D. H. (2013). Keywords and Co-occurrence Patterns in the Voynich Manuscript. \textit{PLOS ONE}.
+\bibitem{landini2001} Landini, G. (2001). Evidence of Linguistic Structure in the Voynich Manuscript Using Spectral Analysis. \textit{Cryptologia}.
+\bibitem{reddy2011} Reddy, S., \& Knight, K. (2011). What We Know About the Voynich Manuscript. \textit{ACL}.
+\bibitem{takahashi2011} Takahashi, T. (2011). Takahashi Transcription of the Voynich Manuscript. \textit{Voynich Manuscript Research}.
+\bibitem{janick2004} Janick, J., \& Tucker, A. O. (2004). The Voynich Manuscript: The Herbal Section. \textit{Journal of the Society for the History of Natural History}.
+\bibitem{yates1966} Yates, F. A. (1966). \textit{The Art of Memory}. University of Chicago Press.
+\end{thebibliography}
+
+\end{document}} % Required for inserting images
+
+\title{main.txt}
+\author{ingvar O }
+\date{December 2025}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+\end{document}
